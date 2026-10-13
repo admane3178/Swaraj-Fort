@@ -357,7 +357,7 @@ export const forts: Fort[] = [
     altitude: 618,
     lat: 18.5400,
     lng: 73.3100,
-    image: "/images/forts/sudhagad.jpg",
+    image: "/images/forts/placeholder.svg",
     shortDescription: "A massive fort proposed by Shivaji Maharaj as his capital.",
     history: "Sudhagad (formerly Bhorapgad) is a large plateau fort. It was a strong candidate for the capital of the Maratha Empire before Raigad was finalized.",
     significance: "The fort that almost became the capital."
