@@ -1,6 +1,6 @@
 import { useParams, Link } from "react-router-dom";
 import { getFortBySlug } from "@/data/forts";
-import { motion } from "framer-motion";
+import FortCarousel from "@/components/FortCarousel";
 import { MapPin, Mountain, ArrowLeft, ExternalLink } from "lucide-react";
 
 const FortDetail = () => {
@@ -24,7 +24,7 @@ const FortDetail = () => {
     <div className="pt-16 min-h-screen">
       {/* Hero */}
       <div className="relative h-[50vh] md:h-[60vh]">
-        <img src={fort.image} alt={fort.name} className="w-full h-full object-cover" />
+        <FortCarousel images={fort.images ?? [fort.image]} alt={fort.name} />
         <div className="absolute inset-0 bg-gradient-to-t from-charcoal via-charcoal/40 to-transparent" />
         <div className="absolute bottom-0 left-0 right-0 p-6 md:p-12 max-w-5xl mx-auto">
           <Link to="/forts" className="text-gold/80 font-display text-xs tracking-wider uppercase flex items-center gap-1 mb-3 hover:text-gold">

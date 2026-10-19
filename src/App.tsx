@@ -9,6 +9,7 @@ import FortsListing from "./pages/FortsListing";
 import FortDetail from "./pages/FortDetail";
 import ShivajiMaharaj from "./pages/ShivajiMaharaj";
 import SambhajiMaharaj from "./pages/SambhajiMaharaj";
+import MapPage from "./pages/MapPage";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
@@ -26,6 +27,7 @@ const App = () => (
           <Route path="/fort/:slug" element={<FortDetail />} />
           <Route path="/shivaji-maharaj" element={<ShivajiMaharaj />} />
           <Route path="/sambhaji-maharaj" element={<SambhajiMaharaj />} />
+          <Route path="/map" element={<MapPage />} />
           <Route path="*" element={<NotFound />} />
         </Routes>
       </BrowserRouter>

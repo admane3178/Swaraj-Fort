@@ -60,7 +60,6 @@ async function fetchImage(title, attempt = 1) {
   } catch (error) {
     console.error(`Error fetching image for ${title} (attempt ${attempt}):`, error.message);
     if (attempt < maxAttempts) {
-      // simple exponential backoff
       await new Promise(r => setTimeout(r, attempt * 1000));
       return fetchImage(title, attempt + 1);
     }
@@ -68,7 +67,14 @@ async function fetchImage(title, attempt = 1) {
   }
 }
 
-// In main loop, after attempting to fetch image, use a placeholder if missing
+async function downloadImage(url, dest) {
+  try {
+    execSync(`curl -s -L -A "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36" -o${dest}" "${url}"`);
+  } catch (error) {
+    console.error(`Error downloading image from ${url}:`, error.message);
+  }
+}
+
 async function main() {
   const assetsDir = path.join(__dirname, 'public', 'images', 'forts');
   if (!fs.existsSync(assetsDir)) {
@@ -96,71 +102,6 @@ async function main() {
       console.log(`Used placeholder for ${fort.title}`);
     } else {
       console.log(`No image found for ${fort.title} and no placeholder available.`);
-    }
-  }
-}
-
-main().catch(console.error);
-  try {
-    const url = `https://en.wikipedia.org/w/api.php?action=query&titles=${title}&prop=pageimages&format=json&pithumbsize=1000`;
-    const response = await fetch(url, {
-      headers: {
-        'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36 SwarajyaApp/2.0'
-      }
-    });
-    const text = await response.text();
-    try {
-      const data = JSON.parse(text);
-      const pages = data.query.pages;
-      const pageId = Object.keys(pages)[0];
-      if (pageId === '-1') return null;
-      const thumbnail = pages[pageId].thumbnail;
-      return thumbnail ? thumbnail.source : null;
-    } catch (e) {
-      console.error(`Invalid JSON response for ${title}:`, text.substring(0, 50));
-      return null;
-    }
-  } catch (error) {
-    console.error(`Error fetching image metadata for ${title}:`, error);
-    return null;
-  }
-}
-
-async function downloadImage(url, dest) {
-  try {
-    // Use curl to download the file, handling redirects (-L) and passing a real browser User-Agent
-    execSync(`curl -s -L -A "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36" -o "${dest}" "${url}"`);
-  } catch (error) {
-    console.error(`Error downloading image from ${url}:`, error.message);
-  }
-}
-
-async function main() {
-  const assetsDir = path.join(__dirname, 'public', 'images', 'forts');
-  if (!fs.existsSync(assetsDir)) {
-    fs.mkdirSync(assetsDir, { recursive: true });
-  }
-
-  for (const fort of fortsToFetch) {
-    const destPath = path.join(assetsDir, `${fort.id}.jpg`);
-    if (fs.existsSync(destPath)) {
-      const stats = fs.statSync(destPath);
-      if (stats.size > 5000) {
-        console.log(`Image for ${fort.title} already exists and is valid. Skipping.`);
-        continue;
-      } else {
-        console.log(`Image for ${fort.title} is too small (${stats.size} bytes). Redownloading...`);
-      }
-    }
-    
-    console.log(`Fetching image for ${fort.title}...`);
-    const imageUrl = await fetchImage(fort.title);
-    if (imageUrl) {
-      console.log(`Found image URL: ${imageUrl}`);
-      await downloadImage(imageUrl, destPath);
-      console.log(`Saved to ${destPath}`);
-    } else {
-      console.log(`No image found for ${fort.title}`);
     }
   }
 }
