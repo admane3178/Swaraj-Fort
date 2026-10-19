@@ -1,6 +1,8 @@
 import { Link, useLocation } from "react-router-dom";
 import { Menu, X } from "lucide-react";
 import { useState } from "react";
+import logo from "@/assets/logo.svg";
+import ThemeToggle from "@/components/ThemeToggle";
 
 const links = [
   { to: "/", label: "Home" },
@@ -16,8 +18,9 @@ const Navbar = () => {
   return (
     <nav className="fixed top-0 left-0 right-0 z-50 bg-charcoal/95 backdrop-blur-md border-b border-gold/20">
       <div className="max-w-7xl mx-auto px-4 flex items-center justify-between h-16">
-        <Link to="/" className="font-display text-lg font-bold text-gradient-gold tracking-wider">
-          ⚔ Swarajya Forts
+        <Link to="/" className="flex items-center font-display text-lg font-bold text-gradient-gold tracking-wider">
+          <img src={logo} alt="Swarajya Forts" className="h-8 w-auto mr-2" />
+          Swarajya Forts
         </Link>
 
         {/* Desktop */}
@@ -33,6 +36,7 @@ const Navbar = () => {
               {l.label}
             </Link>
           ))}
+          <ThemeToggle />
         </div>
 
         {/* Mobile toggle */}
@@ -60,6 +64,9 @@ const Navbar = () => {
               {l.label}
             </Link>
           ))}
+          <div className="mt-2">
+            <ThemeToggle />
+          </div>
         </div>
       )}
     </nav>

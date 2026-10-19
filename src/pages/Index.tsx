@@ -3,6 +3,7 @@ import FortCard from "@/components/FortCard";
 import { forts } from "@/data/forts";
 import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
+import { Button } from "@/components/ui/Button";
 
 const Index = () => {
   const featured = forts.slice(0, 6);
@@ -32,12 +33,14 @@ const Index = () => {
         </div>
 
         <div className="text-center mt-12">
-          <Link
-            to="/forts"
-            className="inline-block px-8 py-3 border border-gold text-gold font-display text-sm tracking-wider uppercase rounded-sm hover:bg-gold/10 transition-all"
-          >
-            View All Forts →
-          </Link>
+          <Button asChild>
+            <Link
+              to="/forts"
+              className="inline-block px-8 py-3 border border-gold text-gold font-display text-sm tracking-wider uppercase rounded-sm hover:bg-gold/10 transition-all"
+            >
+              View All Forts →
+            </Link>
+          </Button>
         </div>
       </section>
 

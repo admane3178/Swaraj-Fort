@@ -25,11 +25,13 @@ const Cluster: React.FC = () => {
 
   useEffect(() => {
     // Guard – only run if the plugin attached the function
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
     if (typeof (L as any).markerClusterGroup !== "function") {
       console.error("leaflet.markercluster not loaded");
       return;
     }
 
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
     const markerCluster = (L as any).markerClusterGroup();
     forts.forEach((fort) => {
       const marker = L.marker([fort.lat, fort.lng]);
@@ -57,18 +59,19 @@ const FortsMap: React.FC<FortsMapProps> = ({ forts: propForts }) => {
   const position: [number, number] = [19.0760, 72.8777]; // centre on Maharashtra
 
   return (
-    <MapContainer
-      center={position}
-      zoom={7}
-      className="h-[70vh] w-full sm:h-[80vh] md:h-[90vh]"
-      role="region"
-    >
-      <TileLayer
-        attribution="&copy; <a href='https://www.openstreetmap.org/copyright'>OpenStreetMap</a> contributors"
-        url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
-      />
-      <Cluster />
-    </MapContainer>
+    <div role="region" aria-label="Forts map">
+      <MapContainer
+        center={position}
+        zoom={7}
+        className="h-[70vh] w-full sm:h-[80vh] md:h-[90vh]"
+      >
+        <TileLayer
+          attribution="&copy; <a href='https://www.openstreetmap.org/copyright'>OpenStreetMap</a> contributors"
+          url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
+        />
+        <Cluster />
+      </MapContainer>
+    </div>
   );
 };
 

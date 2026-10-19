@@ -21,7 +21,7 @@ export default {
     },
     extend: {
       fontFamily: {
-        display: ['Cinzel', 'serif'],
+        devanagari: ['Noto Sans Devanagari', 'sans-serif'],
         body: ['Lora', 'serif'],
       },
       colors: {
