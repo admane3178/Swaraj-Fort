@@ -2,9 +2,12 @@
 import { test, expect } from '@playwright/test';
 
 test('home page loads and has correct title', async ({ page }) => {
-  await page.goto('/');
-  await expect(page).toHaveURL(/\//);
-  // Assuming the main heading contains "Swaraj Forts"
-  const heading = await page.locator('h1, h2, h3').first();
-  await expect(heading).toContainText('Swaraj');
+  // Verify page URL.
+  await expect(page).toHaveURL(/\\/$/);
+  // Ensure the app has rendered.
+  await page.waitForLoadState('networkidle');
+  // Small delay to allow any animation to finish.
+  await page.waitForTimeout(3000);
+  const heading = page.locator('h1');
+  await expect(heading).toContainText('Swarajya');
 });
