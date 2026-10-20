@@ -33,7 +33,7 @@ const Index = () => {
         </div>
 
         <div className="text-center mt-12">
-          <Button asChild>
+          <Button asChild={false}>
             <Link
               to="/forts"
               className="inline-block px-8 py-3 border border-gold text-gold font-display text-sm tracking-wider uppercase rounded-sm hover:bg-gold/10 transition-all"
