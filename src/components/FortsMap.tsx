@@ -5,7 +5,7 @@ import "leaflet/dist/leaflet.css"; // Leaflet core CSS
 import "leaflet.markercluster"; // side‑effect import – augments L
 import "leaflet.markercluster/dist/MarkerCluster.css"; // marker‑cluster CSS
 import "leaflet.markercluster/dist/MarkerCluster.Default.css";
-import { forts } from "@/data/forts";
+import { forts as defaultForts } from "@/data/forts";
 
 // Fix default Leaflet icon paths (Vite/Webpack)
 import markerIcon2x from "leaflet/dist/images/marker-icon-2x.png";
@@ -19,8 +19,23 @@ L.Icon.Default.mergeOptions({
   shadowUrl: markerShadow,
 });
 
+// ---------- Types ----------
+interface Fort {
+  name: string;
+  district: string;
+  lat: number;
+  lng: number;
+  // other fields may exist (e.g., images)
+}
+
+type FortsArray = Fort[];
+
 // ---------- Cluster component ----------
-const Cluster: React.FC = () => {
+interface ClusterProps {
+  forts: FortsArray;
+}
+
+const Cluster: React.FC<ClusterProps> = ({ forts }) => {
   const map = useMap();
 
   useEffect(() => {
@@ -44,19 +59,20 @@ const Cluster: React.FC = () => {
     return () => {
       map.removeLayer(markerCluster);
     };
-  }, [map]);
+  }, [map, forts]);
 
   return null;
 };
 
 // ---------- Component props ----------
 interface FortsMapProps {
-  forts?: typeof import("@/data/forts").forts;
+  forts?: FortsArray;
 }
 
 // ---------- Main component ----------
-const FortsMap: React.FC<FortsMapProps> = ({ forts: propForts }) => {
+const FortsMap: React.FC<FortsMapProps> = ({ forts }) => {
   const position: [number, number] = [19.0760, 72.8777]; // centre on Maharashtra
+  const fortsToShow = forts ?? defaultForts;
 
   return (
     <div role="region" aria-label="Forts map">
@@ -69,7 +85,7 @@ const FortsMap: React.FC<FortsMapProps> = ({ forts: propForts }) => {
           attribution="&copy; <a href='https://www.openstreetmap.org/copyright'>OpenStreetMap</a> contributors"
           url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
         />
-        <Cluster />
+        <Cluster forts={fortsToShow} />
       </MapContainer>
     </div>
   );
