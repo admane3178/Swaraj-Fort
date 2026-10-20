@@ -5,12 +5,15 @@ import "./index.css";
 import { ErrorBoundary } from "./components/ErrorBoundary";
 import "./i18n"; // initialize i18n
 import { HelmetProvider } from "react-helmet-async";
+import { BrowserRouter } from "react-router-dom";
 
 createRoot(document.getElementById("root")!).render(
   <HelmetProvider>
     <ErrorBoundary>
       <Suspense fallback={<div className="p-4">Loading...</div>}>
-        <App />
+        <BrowserRouter>
+          <App />
+        </BrowserRouter>
       </Suspense>
     </ErrorBoundary>
   </HelmetProvider>
