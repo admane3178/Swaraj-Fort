@@ -36,7 +36,7 @@ const App = () => (
               <Route path="/map" element={<MapPage />} />
               <Route path="*" element={<NotFound />} />
             </Routes>
-          </BrowserRouter>
+
           <Footer />
         </Suspense>
       </ErrorBoundary>
