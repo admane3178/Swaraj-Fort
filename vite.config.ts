@@ -50,7 +50,7 @@ VitePWA({
     },
   },
   server: {
-    port: 3001,
+    port: 0, // let Vite pick a free port
     strictPort: true,
     host: "::",
     hmr: { overlay: false },
