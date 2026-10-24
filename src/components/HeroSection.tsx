@@ -22,7 +22,7 @@ const HeroSection = () => {
   const heroImage = '/assets/hero/shivaji-hero-1920.jpg'; // public path
 
   return (
-    <section className='relative min-h-[90vh] flex items-center justify-center overflow-hidden bg-black'>
+    <section className='relative min-h-screen flex items-center justify-center overflow-hidden'>
       {/* Background Image */}
       <div
         className='absolute inset-0 bg-cover bg-center bg-no-repeat'
