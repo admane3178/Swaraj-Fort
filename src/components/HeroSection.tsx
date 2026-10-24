@@ -19,7 +19,7 @@ const HeroSection = () => {
   const totalForts = forts.length;
   const totalDistricts = new Set(forts.map((f) => f.district)).size;
   const coronationYear = 1674; // could derive from data if needed
-  const heroImage = '/assets/hero/shivaji-hero.jpg'; // public path
+  const heroImage = '/assets/hero/shivaji-hero-1920.jpg'; // public path
 
   return (
     <section className='relative min-h-[90vh] flex items-center justify-center overflow-hidden bg-black'>
