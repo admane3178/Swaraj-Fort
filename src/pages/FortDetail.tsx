@@ -1,4 +1,5 @@
 import { useParams, Link } from "react-router-dom";
+import { motion } from "framer-motion";
 import { getFortBySlug } from "@/data/forts";
 import FortCarousel from "@/components/FortCarousel";
 import { MapPin, Mountain, ArrowLeft, ExternalLink } from "lucide-react";
