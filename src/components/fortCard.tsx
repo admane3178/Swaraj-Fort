@@ -22,7 +22,7 @@ const FortCard = ({ fort, index }: { fort: Fort; index: number }) => {
     >
       <Link
         to={`/fort/${fort.id}`}
-        className="group block bg-card rounded-sm overflow-hidden border border-border hover:border-gold/50 transition-all duration-300 shadow-heritage"
+        className="group block bg-zinc-900/60 backdrop-blur-md rounded-2xl p-5 shadow-xl transition-transform hover:scale-105 duration-300"
       >
         <div className="relative h-52 overflow-hidden">
           <img

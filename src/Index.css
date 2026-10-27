@@ -83,8 +83,8 @@
 }
 
 @layer base {
-  * {
-    @apply border;
+
+
   }
   body {
     background-color: hsl(var(--background));

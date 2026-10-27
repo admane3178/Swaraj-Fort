@@ -47,7 +47,7 @@ const FortsListing = () => {
               value={search}
               onChange={(e) => setSearch(e.target.value)}
               placeholder="Search forts by name or district..."
-              className="w-full pl-10 pr-4 py-2.5 bg-card border border-border rounded-sm font-body text-sm text-foreground placeholder:text-muted-foreground focus:outline-none focus:border-gold/50"
+              className="w-full pl-10 pr-4 py-2 bg-zinc-900 border border-zinc-800 rounded-xl text-gray-300 placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-amber-500"
             />
           </div>
           <div className="flex gap-2">
@@ -74,7 +74,7 @@ const FortsListing = () => {
 
         {/* Grid */}
         {filtered.length > 0 ? (
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
             {filtered.map((fort, i) => (
               <FortCard key={fort.id} fort={fort} index={i} />
             ))}

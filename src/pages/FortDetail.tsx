@@ -10,7 +10,7 @@ const FortDetail = () => {
 
   if (!fort) {
     return (
-      <div className="pt-24 text-center min-h-screen">
+      <div className="pt-24 text-center min-h-screen bg-zinc-950 text-white">
         <h1 className="font-display text-2xl text-foreground">Fort not found</h1>
         <Link to="/forts" className="text-gold font-display text-sm mt-4 inline-block">
           ← Back to Forts
@@ -22,7 +22,7 @@ const FortDetail = () => {
   const mapsUrl = `https://www.google.com/maps?q=${fort.lat},${fort.lng}`;
 
   return (
-    <div className="pt-16 min-h-screen">
+    <div className="pt-16 min-h-screen bg-zinc-950 text-white">
       {/* Hero */}
       <div className="relative h-[50vh] md:h-[60vh]">
         <FortCarousel images={fort.images ?? [fort.image]} alt={fort.name} />
@@ -50,19 +50,19 @@ const FortDetail = () => {
       <div className="max-w-5xl mx-auto px-4 py-12 grid md:grid-cols-3 gap-8">
         <div className="md:col-span-2 space-y-8">
           <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.2 }}>
-            <h2 className="font-display text-xl font-semibold text-foreground border-b border-gold/30 pb-2 mb-4">History</h2>
+            <div className="border-l-4 border-amber-500 bg-zinc-900/80 rounded-r-2xl p-6 shadow-md mb-6"><h2 className="font-display text-xl font-semibold text-foreground mb-2">History</h2></div>
             <p className="font-body text-foreground/80 leading-relaxed">{fort.history}</p>
           </motion.div>
           <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.3 }}>
-            <h2 className="font-display text-xl font-semibold text-foreground border-b border-gold/30 pb-2 mb-4">Strategic Significance</h2>
+            <div className="border-l-4 border-amber-500 bg-zinc-900/80 rounded-r-2xl p-6 shadow-md mb-6"><h2 className="font-display text-xl font-semibold text-foreground mb-2">Strategic Significance</h2></div>
             <p className="font-body text-foreground/80 leading-relaxed">{fort.significance}</p>
           </motion.div>
         </div>
 
         {/* Sidebar */}
         <div className="space-y-6">
-          <div className="bg-card border border-border rounded-sm p-5">
-            <h3 className="font-display text-sm font-semibold text-foreground mb-3">Technical Data</h3>
+                      <div className="border-l-4 border-amber-500 bg-zinc-900/80 rounded-r-2xl p-6 shadow-md mb-6"><h2 className="font-display text-xl font-semibold text-foreground mb-2">Technical Data</h2></div>
+
             <dl className="space-y-2 text-sm font-body">
               <div className="flex justify-between">
                 <dt className="text-muted-foreground">Type</dt>
@@ -96,7 +96,7 @@ const FortDetail = () => {
           </a>
 
           {/* Embedded Map */}
-          <div className="rounded-sm overflow-hidden border border-border">
+          <div className="rounded-sm overflow-hidden">
             <iframe
               title={`${fort.name} location`}
               src={`https://www.google.com/maps/embed/v1/place?key=AIzaSyBFw0Qbyq9zTFTd-tUY6dZWTgaQzuU17R8&q=${fort.lat},${fort.lng}&zoom=13&maptype=satellite`}

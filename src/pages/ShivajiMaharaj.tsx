@@ -40,7 +40,7 @@ const ShivajiMaharaj = () => {
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              className="bg-card border border-border p-8 rounded-lg shadow-sm hover:shadow-md transition-shadow"
+              className="border-l-4 border-amber-500 bg-zinc-900/80 rounded-r-2xl p-6 shadow-md mb-6"
             >
               <ScrollText className="w-10 h-10 text-gold mb-6" />
               <h3 className="text-2xl font-display font-bold text-foreground mb-4">Ashtapradhan Mandal</h3>
@@ -55,7 +55,7 @@ const ShivajiMaharaj = () => {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: 0.1 }}
-              className="bg-card border border-border p-8 rounded-lg shadow-sm hover:shadow-md transition-shadow"
+              className="border-l-4 border-amber-500 bg-zinc-900/80 rounded-r-2xl p-6 shadow-md mb-6"
             >
               <Sword className="w-10 h-10 text-gold mb-6" />
               <h3 className="text-2xl font-display font-bold text-foreground mb-4">Ganimi Kava (Guerrilla Warfare)</h3>
@@ -70,7 +70,7 @@ const ShivajiMaharaj = () => {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: 0.2 }}
-              className="bg-card border border-border p-8 rounded-lg shadow-sm hover:shadow-md transition-shadow"
+              className="border-l-4 border-amber-500 bg-zinc-900/80 rounded-r-2xl p-6 shadow-md mb-6"
             >
               <Anchor className="w-10 h-10 text-gold mb-6" />
               <h3 className="text-2xl font-display font-bold text-foreground mb-4">Father of the Indian Navy</h3>
@@ -85,7 +85,7 @@ const ShivajiMaharaj = () => {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: 0.3 }}
-              className="bg-card border border-border p-8 rounded-lg shadow-sm hover:shadow-md transition-shadow"
+              className="border-l-4 border-amber-500 bg-zinc-900/80 rounded-r-2xl p-6 shadow-md mb-6"
             >
               <Shield className="w-10 h-10 text-gold mb-6" />
               <h3 className="text-2xl font-display font-bold text-foreground mb-4">Master of Fortifications</h3>
